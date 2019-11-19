@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/admin-page', 'AdminController@index');
 Route::get('/reg-penduduk', 'AdminController@createPenduduk');
 Route::post('/admin-page', 'AdminController@storePenduduk');
+
+
+Route::get('/reg-ktp', 'KTPController@regKTP');
+Route::post('/reg-ktp', 'KTPController@storeKTP');

@@ -7,6 +7,10 @@
 <div class="alert alert-success">
     {{ session('status_penduduk') }}
 </div>
+@elseif (session('status_ktp'))
+<div class="alert alert-success">
+    {{ session('status_ktp') }}
+</div>
 @endif
 <table class="table mt-3">
     <thead class="thead-dark">
@@ -34,7 +38,8 @@
     </tbody>
 </table>
 
-<h1 class="my-5">Data E-KTP</h1>
+<h1 class="my-5" id="ktp-reg">Data E-KTP</h1>
+
 <table class="table mt-5">
     <thead class="thead-dark">
         <tr>

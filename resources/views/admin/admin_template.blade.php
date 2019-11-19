@@ -29,13 +29,12 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{url('/reg-penduduk')}}">Data Penduduk</a>
-                        <a class="dropdown-item" href="#">E-KTP</a>
+                        <a class="dropdown-item" href="{{url('/reg-ktp')}}">E-KTP</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
-
     @yield('content')
 
 

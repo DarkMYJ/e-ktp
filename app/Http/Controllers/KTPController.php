@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Citizen;
 use App\Card;
-use Illuminate\Support\Facades\Validator;
+use App\Citizen;
 
-class AdminController extends Controller
+class KTPController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $citizens = Citizen::all();
-        return view('admin/landing', ['citizens' => $citizens]);
+        //
     }
 
     /**
@@ -25,10 +23,12 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createPenduduk()
+    public function regKTP()
     {
-        return view('admin/form_penduduk');
+        $card = Citizen::all();
+        return view('admin/form_ktp', ['card' => $card]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,19 +36,22 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storePenduduk(Request $request)
+    public function storeKTP(Request $card_req)
     {
-        $request->validate([
-            'nama_penduduk' => ['required'],
-            'no_kk' => ['required', 'size:14', 'unique:citizens'],
-            'nik' => ['required', 'size:14', 'unique:citizens'],
+        $card_req->validate([
+            'cards_id' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'agama' => ['required'],
+            'status_kawin' => ['required'],
+            'status_kerja' => ['required'],
+            'kewarganegaraan' => ['required'],
+            'city-created_at' => ['required'],
             'alamat' => ['required'],
         ]);
 
-        Citizen::create($request->all());
-        return redirect('/admin-page')->with('status_penduduk', 'Data Penduduk Berhasil Ditambahkan');;
+        Card::create($card_req->all());
+        return redirect('/admin-page')->with('status_ktp', 'Data KTP Berhasil Ditambahkan');;
     }
-
 
     /**
      * Display the specified resource.
