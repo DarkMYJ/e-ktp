@@ -9,6 +9,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Styles -->
     <style>
@@ -87,16 +88,19 @@
                 Laravel
             </div>
 
-            <div class="links">
-                <a href="https://laravel.com/docs">Docs</a>
-                <a href="https://laracasts.com">Laracasts</a>
-                <a href="https://laravel-news.com">News</a>
-                <a href="https://blog.laravel.com">Blog</a>
-                <a href="https://nova.laravel.com">Nova</a>
-                <a href="https://forge.laravel.com">Forge</a>
-                <a href="https://vapor.laravel.com">Vapor</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
-            </div>
+            <form action="" class="d-flex">
+                <div class="form-group row">
+                    <div class="col-md-10">
+                        <input id="nik" type="text" class="form-control " name="nik" placeholder="Masukkan NIK">
+                    </div>
+
+                    <div class="form-group row">
+                        <button type="submit" class="btn btn-primary mr-5">Check NIK</button>
+                    </div>
+
+                </div>
+            </form>
+
         </div>
     </div>
 </body>
