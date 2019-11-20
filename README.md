@@ -4,5 +4,5 @@
 ## TO-DO
 * [x] CRUD Penduduk
 * [ ] CRUD KTP
-* Otentikasi Admin
-* Halaman Landing User > Cek Status KTP
+* [x] Otentikasi Admin
+* [ ] Halaman Landing User > Cek Status KTP
