@@ -14,6 +14,10 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $citizens = Citizen::all();
@@ -49,6 +53,35 @@ class AdminController extends Controller
         return redirect('/admin-page')->with('status_penduduk', 'Data Penduduk Berhasil Ditambahkan');;
     }
 
+    public function regKTP()
+    {
+        $card = Citizen::all();
+        return view('admin/form_ktp', ['card' => $card]);
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeKTP(Request $card_req)
+    {
+        $card_req->validate([
+            'cards_id' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'agama' => ['required'],
+            'status_kawin' => ['required'],
+            'status_kerja' => ['required'],
+            'kewarganegaraan' => ['required'],
+            'city-created_at' => ['required'],
+            'alamat' => ['required'],
+        ]);
+
+        Card::create($card_req->all());
+        return redirect('/admin-page')->with('status_ktp', 'Data KTP Berhasil Ditambahkan');;
+    }
 
     /**
      * Display the specified resource.

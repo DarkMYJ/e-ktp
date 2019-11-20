@@ -20,5 +20,9 @@ Route::get('/reg-penduduk', 'AdminController@createPenduduk');
 Route::post('/admin-page', 'AdminController@storePenduduk');
 
 
-Route::get('/reg-ktp', 'KTPController@regKTP');
-Route::post('/reg-ktp', 'KTPController@storeKTP');
+Route::get('/reg-ktp', 'AdminController@regKTP');
+Route::post('/reg-ktp', 'AdminController@storeKTP');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
