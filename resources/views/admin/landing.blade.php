@@ -17,7 +17,6 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Nama Penduduk</th>
-            <th scope="col">NO KK</th>
             <th scope="col">NIK</th>
             <th scope="col">Alamat</th>
             <th scope="col">Aksi</th>
@@ -28,11 +27,13 @@
         <tr>
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{$ctz->nama_penduduk}}</td>
-            <td>{{$ctz->no_kk}}</td>
             <td>{{$ctz->nik}}</td>
             <td>{{$ctz->alamat}}</td>
-            <td><button type="button" class="btn btn-primary">Edit</button>
-                <button type="button" class="btn btn-danger">Hapus</button></td>
+            <td>
+                <a class="btn btn-primary" href="/penduduk/{{$ctz->id}}">
+                    Detail
+                </a>
+            </td>
         </tr>
         @endforeach
     </tbody>

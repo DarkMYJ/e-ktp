@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Citizen;
 use App\Card;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -18,6 +19,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index()
     {
         $citizens = Citizen::all();
@@ -53,6 +55,58 @@ class AdminController extends Controller
         return redirect('/admin-page')->with('status_penduduk', 'Data Penduduk Berhasil Ditambahkan');;
     }
 
+    public function showPenduduk(Citizen $citizen)
+    {
+        return view('admin/detail_penduduk', ['citizen' => $citizen]);
+    }
+
+    public function destroyPenduduk(Citizen $citizen)
+    {
+        Citizen::destroy($citizen->id);
+        return redirect('/admin-page')->with('status_penduduk', 'Data Penduduk Berhasil Dihapus');
+    }
+
+    public function editPenduduk(Citizen $citizen)
+    {
+        return view('admin/edit_pdk', ['citizen' => $citizen]);
+    }
+
+    public function updatePenduduk(Request $request, Citizen $citizen)
+    {
+        // $request->validate([
+        //     'nama_penduduk' => ['required'],
+        //     'no_kk' => ['required', 'size:14', 'unique:citizens'],
+        //     'nik' => ['required', 'size:14', 'unique:citizens'],
+        //     'alamat' => ['required'],
+        // ]);
+        Validator::make($request->all(), [
+            'nama_penduduk' => 'required',
+            'no_kk' => [
+                'required',
+                Rule::unique('citizens')->ignore($citizen->id),
+                'size:14',
+            ],
+            'nik' => [
+                'required',
+                Rule::unique('citizens')->ignore($citizen->id),
+                'size:14',
+            ],
+            'alamat' => 'required',
+        ])->validate();
+
+
+        Citizen::where('id', $citizen->id)
+            ->update([
+                'nama_penduduk' => $request->nama_penduduk,
+                'no_kk' => $request->no_kk,
+                'nik' => $request->nik,
+                'alamat' => $request->alamat,
+            ]);
+
+        return redirect('/admin-page')->with('status_penduduk', 'Data Penduduk Berhasil Diubah');
+    }
+
+    /* KTP Section*/
     public function regKTP()
     {
         $card = Citizen::all();

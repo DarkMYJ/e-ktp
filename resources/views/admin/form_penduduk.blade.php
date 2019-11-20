@@ -25,11 +25,11 @@
     </div>
     <div class="form-group col-sm-5">
         <label for=" nik">NIK</label>
-        <input type="number" class="form-control" value="{{ old('no_kk') }}" name=" nik" id="nik" placeholder="Masukkan NIK">
+        <input type="number" class="form-control" value="{{ old('nik') }}" name=" nik" id="nik" placeholder="Masukkan NIK">
     </div>
     <div class="form-group col-sm-5">
         <label for=" alamat">Alamat</label>
-        <input type="text" class="form-control" value="{{ old('no_kk') }}" name=" alamat" id="alamat" placeholder="Masukkan Alamat">
+        <input type="text" class="form-control" value="{{ old('alamat') }}" name=" alamat" id="alamat" placeholder="Masukkan Alamat">
     </div>
 
     <div class="form-group col-sm-5">
