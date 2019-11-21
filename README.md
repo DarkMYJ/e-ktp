@@ -5,11 +5,11 @@
 * [x] CRUD Penduduk (Prioritas : Tinggi)
 * [ ] CRUD KTP (Prioritas : Tinggi)
 * [x] Otentikasi Admin (Prioritas : Menengah)
-* [ ] Halaman Landing User > Cek Status KTP (Prioritas : Menengah)
+* [x] Halaman Landing User > Cek Status KTP (Prioritas : Menengah)
 * [ ] Simpan, Tampil Gambar  (Prioritas : Menengah - Tinggi)
 * [ ] Tambah Role untuk Admin  (Optional)
-        * Admin
-        * SuperAdmin
+        - Admin
+        - SuperAdmin
 * [ ] Ubah Struktur DB  (Prioritas : Rendah - Menengah)
 * [ ] Refraktor kode  (Tergantung mood)
 
