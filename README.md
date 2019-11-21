@@ -5,11 +5,9 @@
 * [x] CRUD Penduduk (Prioritas : Tinggi)
 * [ ] CRUD KTP (Prioritas : Tinggi)
 * [x] Otentikasi Admin (Prioritas : Menengah)
-* [ ] Halaman Landing User > Cek Status KTP (Prioritas : Menengah)
+* [x] Halaman Landing User > Cek Status KTP (Prioritas : Menengah)
 * [ ] Simpan, Tampil Gambar  (Prioritas : Menengah - Tinggi)
 * [ ] Tambah Role untuk Admin  (Optional)
-        * Admin
-        * SuperAdmin
 * [ ] Ubah Struktur DB  (Prioritas : Rendah - Menengah)
 * [ ] Refraktor kode  (Tergantung mood)
 
@@ -32,6 +30,11 @@
     ```
      php artisan serve
     ```
+> Halaman Admin
+    ```
+     /admin-page
+    ```
+
    
 > Note : I Probably Skip Some Steps, but.... i think you can figure out the rest
 > Another Note : U can copy content from .env.example. to ur .env file, if u dont have it
