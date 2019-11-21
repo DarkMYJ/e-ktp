@@ -3,7 +3,7 @@
 
 ## TO-DO
 * [x] CRUD Penduduk (Prioritas : Tinggi)
-* [ ] CRUD KTP (Prioritas : Tinggi)
+* [x] CRUD KTP (Prioritas : Tinggi)
 * [x] Otentikasi Admin (Prioritas : Menengah)
 * [x] Halaman Landing User > Cek Status KTP (Prioritas : Menengah)
 * [ ] Simpan, Tampil Gambar  (Prioritas : Menengah - Tinggi)
