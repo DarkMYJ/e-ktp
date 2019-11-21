@@ -23,7 +23,8 @@ class AdminController extends Controller
     public function index()
     {
         $citizens = Citizen::all();
-        return view('admin/landing', ['citizens' => $citizens]);
+        $cards = Card::all();
+        return view('admin/landing', ['citizens' => $citizens, 'cards' => $cards]);
     }
 
     /**
@@ -73,12 +74,6 @@ class AdminController extends Controller
 
     public function updatePenduduk(Request $request, Citizen $citizen)
     {
-        // $request->validate([
-        //     'nama_penduduk' => ['required'],
-        //     'no_kk' => ['required', 'size:14', 'unique:citizens'],
-        //     'nik' => ['required', 'size:14', 'unique:citizens'],
-        //     'alamat' => ['required'],
-        // ]);
         Validator::make($request->all(), [
             'nama_penduduk' => 'required',
             'no_kk' => [
@@ -143,20 +138,25 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showKTP(Card $card)
     {
-        //
+        return view('admin/detail_ktp', ['card' => $card]);
     }
 
+    public function destroyKTP(Card $card)
+    {
+        Card::destroy($card->cards_id);
+        return redirect('/admin-page')->with('status_penduduk', 'Data KTP Berhasil Dihapus');
+    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editKTP(Card $card)
     {
-        //
+        return view('admin/edit_ktp', ['card' => $card]);
     }
 
     /**
@@ -166,19 +166,28 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateKTP(Request $request, Card $card)
     {
-        //
-    }
+        Validator::make($request->all(), [
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'status_kawin' => 'required',
+            'status_kerja' => 'required',
+            'kewarganegaraan' => 'required',
+            'alamat' => 'required',
+        ])->validate();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+
+        Card::where('cards_id', $card->cards_id)
+            ->update([
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'agama' => $request->agama,
+                'status_kawin' => $request->status_kawin,
+                'status_kerja' => $request->status_kerja,
+                'kewarganegaraan' => $request->kewarganegaraan,
+                'alamat' => $request->alamat,
+            ]);
+
+        return redirect('/admin-page')->with('status_penduduk', 'Data KTP Berhasil Diubah');
     }
 }

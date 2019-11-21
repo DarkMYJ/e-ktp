@@ -45,17 +45,27 @@
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nama Penduduk</th>
             <th scope="col">NIK</th>
-            <th scope="col">Alamat</th>
+            <th scope="col">Jenis Kelamin</th>
+            <th scope="col">Kewarganegaraan</th>
+            <th scope="col">Aksi</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            @foreach ($cards as $crd)
+        <tr>
+            <th scope="row">{{$loop->iteration}}</th>
+            <td>{{$crd->cards_id}}</td>
+            <td>{{$crd->jenis_kelamin}}</td>
+            <td>{{$crd->kewarganegaraan}}</td>
+            <td>
+                <a class="btn btn-primary" href="/ktp/{{$crd->cards_id}}">
+                    Detail
+                </a>
+            </td>
+        </tr>
+        @endforeach
         </tr>
 
     </tbody>

@@ -38,6 +38,13 @@ Route::patch('/penduduk/{citizen}', 'AdminController@updatePenduduk');
 
 Route::get('/reg-ktp', 'AdminController@regKTP');
 Route::post('/reg-ktp', 'AdminController@storeKTP');
+Route::get('/ktp/{card}', 'AdminController@showKTP');
+Route::delete('/ktp/{card}', 'AdminController@destroyKTP');
+Route::get('/ktp/{card}/edit', 'AdminController@editKTP');
+Route::patch('/ktp/{card}', 'AdminController@updateKTP');
+
+
+/* I Still Dont Know What This Is*/
 
 Auth::routes();
 
