@@ -9,7 +9,7 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Styles -->
     <style>
@@ -88,18 +88,29 @@
                 Laravel
             </div>
 
-            <form action="" class="d-flex">
-                <div class="form-group row">
-                    <div class="col-md-10">
-                        <input id="nik" type="text" class="form-control " name="nik" placeholder="Masukkan NIK">
-                    </div>
-
-                    <div class="form-group row">
-                        <button type="submit" class="btn btn-primary mr-5">Check NIK</button>
-                    </div>
-
+            <form class="form-inline" method="post" action="/">
+                @csrf
+                <div class="form-group mb-2">
+                    <input type="text" class="form-control" id="nik" placeholder="Masukkan NIK" name="nik">
                 </div>
+                <button type="submit" class="btn btn-primary mb-2 ml-3">Check Status</button>
             </form>
+
+
+
+            @if (Request::isMethod('post'))
+            @if($user->status_id == 1)
+            <div class="alert alert-success">
+                Status KTP Aktif
+            </div>
+            @else
+            <div class="alert alert-success">
+                Masa Berlaku KTP Telah Habis
+            </div>
+            @endif
+            @endif
+
+
 
         </div>
     </div>

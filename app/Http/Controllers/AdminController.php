@@ -52,7 +52,7 @@ class AdminController extends Controller
         ]);
 
         Citizen::create($request->all());
-        return redirect('/admin-page')->with('status_penduduk', 'Data Penduduk Berhasil Ditambahkan');;
+        return redirect('/admin-page')->with('status_penduduk', 'Data Penduduk Berhasil Ditambahkan');
     }
 
     public function showPenduduk(Citizen $citizen)

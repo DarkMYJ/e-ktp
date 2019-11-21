@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/', function (Request $request) {
+    $name = $request->input('nik');
+
+    $user = DB::table('cards')->where('cards_id', $name)->first();
+
+    return view('welcome', ['user' => $user])->with('gagal', 'ssss');
+});
+
 
 Route::get('/admin-page', 'AdminController@index');
 
